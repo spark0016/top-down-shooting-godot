@@ -1,0 +1,99 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player.gd" type="Script" id=2]
+[ext_resource path="res://ground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://obb.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Menu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Ammo-recharge.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="StyleBoxTexture" id=2]
+
+[sub_resource type="StyleBoxTexture" id=3]
+
+[sub_resource type="BitmapFont" id=4]
+
+[sub_resource type="Theme" id=5]
+
+[sub_resource type="StyleBoxFlat" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 8 )
+
+[node name="RigidBody" parent="StaticBody2D" groups=[
+"bullet_recharge",
+] instance=ExtResource( 7 )]
+position = Vector2( 360, 208 )
+script = null
+
+[node name="RigidBody2" parent="StaticBody2D" groups=[
+"bullet_recharge",
+] instance=ExtResource( 7 )]
+position = Vector2( 624, 272 )
+script = null
+
+[node name="RigidBody3" parent="StaticBody2D" groups=[
+"bullet_recharge",
+] instance=ExtResource( 7 )]
+position = Vector2( 248, 432 )
+script = null
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 486.454, 294.277 )
+script = ExtResource( 2 )
+
+[node name="StaticBody2D2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 272, 304 )
+
+[node name="StaticBody2D3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 656, 432 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 24.0
+margin_top = 40.0
+margin_right = 216.97
+margin_bottom = 56.299
+rect_min_size = Vector2( 0.418, 0.226 )
+rect_scale = Vector2( 2, 2 )
+hint_tooltip = "I Have YouTube"
+theme = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/bold_italics_font = SubResource( 4 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/selection_color = Color( 1, 1, 1, 1 )
+text = "Slidy tank by Sepehr-Beheshti"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_left = -0.134
+anchor_right = 0.176
+margin_left = 832.0
+margin_top = 32.0
+margin_right = 937.0
+margin_bottom = 67.0
+rect_scale = Vector2( 1.41535, 1.40638 )
+theme = SubResource( 5 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_colors/font_color_disabled = Color( 0.631373, 0.470588, 0.129412, 1 )
+custom_colors/font_color = Color( 0.984314, 0.976471, 0.976471, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.839216, 0.74902, 0.74902, 1 )
+text = "menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" parent="." instance=ExtResource( 5 )]
+visible = false
+[connection signal="body_entered" from="StaticBody2D/RigidBody" to="player" method="_on_RigidBody_body_entered"]
+[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]

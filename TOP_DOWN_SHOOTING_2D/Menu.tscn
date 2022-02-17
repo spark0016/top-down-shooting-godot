@@ -1,0 +1,32 @@
+[gd_scene format=2]
+
+[node name="Control" type="Control"]
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 424.0
+margin_top = 56.0
+margin_right = 608.0
+margin_bottom = 128.0
+text = "Options"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LinkButton" type="LinkButton" parent="."]
+margin_left = 424.0
+margin_top = 480.0
+margin_right = 608.0
+margin_bottom = 552.0
+hint_tooltip = "Sub plz"
+text = "                YouTube"
+underline = 1
+
+[node name="Button2" type="Button" parent="."]
+margin_right = 64.0
+margin_bottom = 64.0
+text = "x"
